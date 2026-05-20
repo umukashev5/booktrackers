@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Книга</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>Книга</h1>
+        <a class="button button-secondary" href="/books">Назад</a>
+    </div>
+
+    <div class="card">
+        <form method="post" th:action="${formAction}" th:object="${book}" class="form-grid">
+            <div class="form-group">
+                <label>Название</label>
+                <input type="text" th:field="*{title}" required>
+            </div>
+
+            <div class="form-group">
+                <label>Автор</label>
+                <input type="text" th:field="*{author}">
+            </div>
+
+            <div class="form-group">
+                <label>Всего страниц</label>
+                <input type="number" th:field="*{totalPages}" min="1">
+            </div>
+
+            <div class="form-group">
+                <label>Прочитано страниц</label>
+                <input type="number" th:field="*{pagesRead}" min="0">
+            </div>
+
+            <div class="form-group">
+                <label>Цена покупки</label>
+                <input type="number" step="0.01" th:field="*{price}">
+            </div>
+
+            <div class="form-group">
+                <label>Жанр</label>
+                <input type="text" th:field="*{genre}">
+            </div>
+
+            <div class="form-group">
+                <label>Статус</label>
+                <select th:field="*{status}">
+                    <option th:each="status : ${statuses}"
+                            th:value="${status}"
+                            th:text="${status.displayName}">
+                    </option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Заметки / конспект</label>
+                <textarea th:field="*{notes}"></textarea>
+            </div>
+
+            <button class="button" type="submit">Сохранить</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

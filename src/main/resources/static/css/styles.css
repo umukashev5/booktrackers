@@ -1,0 +1,159 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    color: #1f2937;
+}
+
+.container {
+    width: min(1100px, 92%);
+    margin: 40px auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+h1 {
+    margin: 0;
+    font-size: 32px;
+}
+
+.card {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 16px;
+    border-radius: 10px;
+    background: #2563eb;
+    color: white;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.button:hover {
+    background: #1d4ed8;
+}
+
+.button-danger {
+    background: #dc2626;
+}
+
+.button-danger:hover {
+    background: #b91c1c;
+}
+
+.button-secondary {
+    background: #6b7280;
+}
+
+.button-secondary:hover {
+    background: #4b5563;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    text-align: left;
+    background: #f9fafb;
+    padding: 12px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+td {
+    padding: 12px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.inline-form {
+    display: inline;
+}
+
+.progress-bar {
+    width: 120px;
+    height: 10px;
+    background: #e5e7eb;
+    border-radius: 999px;
+    overflow: hidden;
+    margin-bottom: 4px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #22c55e;
+}
+
+.form-grid {
+    display: grid;
+    gap: 16px;
+}
+
+.form-group {
+    display: grid;
+    gap: 6px;
+}
+
+label {
+    font-weight: 600;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.empty-state {
+    text-align: center;
+    color: #6b7280;
+    padding: 40px;
+}
+
+.progress-form {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+    align-items: center;
+}
+
+.progress-form input {
+    width: 90px;
+    padding: 8px;
+}
+
+.button-small {
+    padding: 8px 10px;
+    font-size: 13px;
+}

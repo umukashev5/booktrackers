@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>BookTracker</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>Мои книги</h1>
+        <a class="button" href="/books/new">Добавить книгу</a>
+    </div>
+
+    <div class="card">
+        <div th:if="${books.isEmpty()}" class="empty-state">
+            Пока книг нет. Самое время добавить первую.
+        </div>
+
+        <table th:if="${!books.isEmpty()}">
+            <thead>
+            <tr>
+                <th>Название</th>
+                <th>Автор</th>
+                <th>Страницы</th>
+                <th>Прогресс</th>
+                <th>Статус</th>
+                <th>Действия</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="book : ${books}">
+                <td th:text="${book.title}">Название</td>
+                <td th:text="${book.author}">Автор</td>
+                <td>
+                    <span th:text="${book.pagesRead}">0</span>
+                    /
+                    <span th:text="${book.totalPages}">0</span>
+                    <br>
+                    <small>
+                        Осталось:
+                        <span th:text="${book.pagesLeft}">0</span>
+                    </small>
+                </td>
+                <td>
+                    <div class="progress-bar">
+                        <div class="progress-fill"
+                             th:style="'width: ' + ${book.progressPercent} + '%'">
+                        </div>
+                    </div>
+
+                    <span th:text="${book.progressPercent + '%'}">0%</span>
+
+                    <form class="progress-form"
+                          th:action="@{/books/{id}/progress(id=${book.id})}"
+                          method="post">
+                        <input type="number"
+                               name="pagesRead"
+                               min="0"
+                               th:max="${book.totalPages}"
+                               th:value="${book.pagesRead}">
+                        <button class="button button-small" type="submit">Обновить</button>
+                    </form>
+                </td>
+                <td th:text="${book.status.displayName}">Статус</td>
+                <td>
+                    <div class="actions">
+                        <a class="button button-secondary"
+                           th:href="@{/books/{id}/edit(id=${book.id})}">
+                            Редактировать
+                        </a>
+
+                        <form class="inline-form"
+                              th:action="@{/books/{id}/delete(id=${book.id})}"
+                              method="post">
+                            <button class="button button-danger" type="submit">
+                                Удалить
+                            </button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
